@@ -1,5 +1,7 @@
 
 import multiprocessing
+import subprocess
+import os
 
 # To run Jarvis
 
@@ -10,7 +12,7 @@ def startJarvis():
     from main import start
     start()
 
-# To run hotword
+# To run hotword listenc:\Users\shiva\Downloads\jarvis-main\jarvis-main\engine\auth\sample.pyer
 
 
 def listenHotword():
@@ -25,6 +27,7 @@ if __name__ == '__main__':
     p1 = multiprocessing.Process(target=startJarvis)
     p2 = multiprocessing.Process(target=listenHotword) 
     p1.start()
+    subprocess.call(r'device.bat')
     p2.start()
     p1.join()
 
@@ -32,3 +35,5 @@ if __name__ == '__main__':
         p2.terminate()
         p2.join()
     print("system stop")
+
+

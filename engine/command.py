@@ -6,7 +6,7 @@ import time
 
 def speak(text):
     text = str(text)
-    engine = pyttsx3.init('sapi5')
+    engine = pyttsx3.init('sapi5') 
     voices = engine.getProperty('voices')
     engine.setProperty('voice', voices[0].id)
     engine.setProperty('rate', 174)
@@ -65,25 +65,41 @@ def allCommands(message=1):
             from engine.features import PlayYoutube
             PlayYoutube(query)
 
-        elif "send message" in query or "phone call" in query or "video call" in query:
-            from engine.features import whatsApp, findContact
-            message = ""
+        elif ("send message" in query or 
+              "phone call" in query or 
+              "video call" in query):
+            from engine.features import (
+                findContact, makeCall, sendMessage, whatsApp
+            )
+
             contact_no, name = findContact(query)
             if (contact_no != 0):
-                
-                if "send message" in query:
-                    message = 'message'
-                    speak("what message to send")
-                    query = takecommand()
+                speak("Which mode you want to use whatsapp or mobile")
+                perferance = takecommand()
+                print(perferance)
 
-                elif "phone call" in query:
-                    message = 'call'
-                else:
-                    message = 'video call'
+                if "mobile" in perferance:
+                    if "send message" in query or "send sms" in query:
+                        speak("what message to send")
+                        message = takecommand()
+                        # sendMessage(contact_no, message, name)
+                    elif "phone call" in query:
+                        makeCall(name, contact_no)
+                    else:
+                        speak("please try again")
+                elif "whatsapp" in perferance:
+                    if "send message" in query:
+                        speak("what message to send")
 
-                name = "default_name"  # Define a default name or fetch it dynamically
-                whatsApp(contact_no, query, message, name)
-        
+                        msg = takecommand()
+                        whatsApp(contact_no, msg, "message", name)
+
+                    elif "phone call" in query:
+                        whatsApp(contact_no, "", "call", name)
+
+                    elif "video call" in query:
+                        whatsApp(contact_no, "", "video", name)
+
         else:
             from engine.features import chatBot
             chatBot(query)
