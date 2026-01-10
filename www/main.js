@@ -1,4 +1,6 @@
 $(document).ready(function () {
+
+    eel.init()()
     
     $('.text').textillate({
         loop: true,
@@ -84,8 +86,9 @@ $(document).ready(function () {
 
 
     $('#chatbox').keyup(function (){
-         let message = $('#chatbox').val();
-         ShowHideMicButton(message);
+
+        let message = $('#chatbox').val();
+        ShowHideMicButton(message);
     });
 
     $('#SendBtn').click(function () {
