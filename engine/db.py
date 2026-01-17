@@ -28,7 +28,7 @@ cursor = conn.cursor()
 
 
 # # Create a table with the desired coloumns
-# cursor.execute(" CREATE TABLE IF NOT EXISTS contacts (id integer primary key, name VARCHAR(200), mobile_no VARCHAR(255), email VARCHAR(255) NULL)")
+# cursor.execute(" CREATE TABLE IF NOT EXISTS contacts (id integer primary key, name VARCHAR(200), mobile_no VARCHAR(255), email VARCHAR(255) NULL, address VARCHAR(255) NULL)")
 
 
 
@@ -64,21 +64,46 @@ cursor = conn.cursor()
 
 
 # Find the number
-query = "Papa"
-query = query.strip().lower()
 
-cursor.execute(
-    """
-    SELECT mobile_no 
-    FROM contacts 
-    WHERE LOWER(name) LIKE ? OR LOWER(name) LIKE ?
-    """,
-    ('%' + query + '%', query + '%')
-)
+# query = "Papa"
+# query = query.strip().lower()
 
-results = cursor.fetchall()
+# cursor.execute(
+#     """
+#     SELECT mobile_no 
+#     FROM contacts 
+#     WHERE LOWER(name) LIKE ? OR LOWER(name) LIKE ?
+#     """,
+#     ('%' + query + '%', query + '%')
+# )
 
-if results:
-    print(results[0][0])
-else:
-    print("No contact found")
+# results = cursor.fetchall()
+
+# if results:
+#     print(results[0][0])
+# else:
+#     print("No contact found")
+
+
+# Adding personal info table
+
+query = "CREATE TABLE IF NOT EXISTS info1(name VARCHAR(100), designation VARCHAR(50),mobileno VARCHAR(40), email VARCHAR(200), city VARCHAR(300))"
+cursor.execute(query)
+
+
+
+
+# Add Column in contacts table
+# cursor.execute("ALTER TABLE contacts ADD COLUMN address VARCHAR(255)")
+
+# import sqlite3
+
+# conn = sqlite3.connect("jarvis.db")
+# cursor = conn.cursor()
+
+# cursor.execute("ALTER TABLE info ADD COLUMN designation TEXT")
+# conn.commit()
+
+# print("designation column added successfully")
+
+

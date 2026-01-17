@@ -24,7 +24,7 @@ def start():
             eel.hideFaceAuth()
             speak("Face Authentication Successful.")
             eel.hideFaceAuthSuccess()
-            speak("Hello, Welcome sir.")
+            speak("Hello, Welcome sir. How can I help you ?")
             eel.hideStart()
         else:
             speak("Face Authentication Failed.")

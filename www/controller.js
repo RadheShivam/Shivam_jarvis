@@ -4,7 +4,8 @@ $(document).ready(function () {
     eel.expose(DisplayMessage)
     function DisplayMessage(message) {
 
-        $(".siri-message li:first").text(message);
+        // $(".siri-message li:first").text(message);
+        $(".siri-message .texts li").text(message);
         $('.siri-message').textillate('start');
 
 
@@ -14,7 +15,7 @@ $(document).ready(function () {
     eel.expose(ShowHood)
     function ShowHood() {
         $("#Oval").attr("hidden", false);
-        $("#SiriWavw").attr("hidden", true);
+        $("#SiriWave").attr("hidden", true);
     }
 
 

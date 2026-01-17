@@ -15,7 +15,7 @@ echo Waiting...
 timeout /t 3 /nobreak > nul
 
 REM ====== SET PHONE IP MANUALLY ======
-set DEVICE_IP=192.168.1.5
+set DEVICE_IP=192.168.1.11
 set ADB_PORT=5555
 
 echo.

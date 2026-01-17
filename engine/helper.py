@@ -1,6 +1,9 @@
 import os
 import re
 import time
+# import markdown2
+
+# from bs4 import BeautifulSoup
 
 
 def extract_yt_term(command):
@@ -43,11 +46,13 @@ def keyEvent(key_code):
     os.syastem(command)
     time.sleep(1)
 
+
 # Tap event used to tap anywhere
 def tapEvent(x, y):
     command = f'adb shell input tap {x} {y}'
     os.system(command)
     time.sleep(1)
+
 
 # Input Event is used to insert text in mobile
 def adbInput(message):
@@ -68,4 +73,7 @@ def replace_spaces_with_percent_s(input_string):
     return input_string.replace(' ', '%s')
 
 
-
+# def markdown_to_text(md):
+#     html = markdown2.markdown(md)
+#     soup = BeautifulSoup(html, "html.parser")
+#     return soup.get_text().strip()

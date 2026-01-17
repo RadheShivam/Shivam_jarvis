@@ -1,4 +1,5 @@
-from email.utils import quote
+import json
+from shlex import quote
 import os
 import sqlite3
 import struct
@@ -15,11 +16,21 @@ import pyaudio
 import pyautogui
 import pywhatkit as kit
 from engine.command import speak
-from engine.config import ASSISTANT_NAME
+from engine.config import ASSISTANT_NAME  # LLM_KEY
 
 
 from engine.helper import extract_yt_term, remove_words
 from hugchat import hugchat
+
+
+def markdown_to_text(markdown_text):
+    """Convert markdown text to plain text"""
+    # Remove markdown formatting
+    text = re.sub(r'[*_`~]', '', markdown_text)
+    text = re.sub(r'\[([^\]]+)\]\([^\)]+\)', r'\1', text)
+    text = re.sub(r'^#+\s+', '', text, flags=re.MULTILINE)
+    return text.strip()
+
 
 # ✅ Connect to database (USE REAL PATH)
 conn = sqlite3.connect("jarvis.db")
@@ -127,9 +138,8 @@ def hotword():
         if paud is not None:
             paud.terminate()
 
+
 # ✅ Find contact number
-
-
 def findContact(query):
 
 
@@ -212,8 +222,6 @@ def chatBot(query):
     return response
 
 
-# android automation
-
 def makeCall(name, mobile_No):
     mobileNo = mobile_No.replace(" ", "")
     speak("Calling "+name)
@@ -260,9 +268,143 @@ def sendMessage(message, mobileNo, name):
     adbInput(message)
 
     # send
-    tapEvents(970, 1292)  # coordinates of send button
+    tapEvent(970, 1292)  # coordinates of send button
 
     speak("message sent successfully to "+name)
 
 
+# import google.generativeai as genai
 
+# def geminai(quary):
+#     try:
+#         query = query = query.replace(ASSISTANT_NAME, "")
+#         query = query.replace("search", "")
+
+#         genai.configure(api_key=LLM_KEY)
+
+#         model = genai.generativeModel("gemini-2.0-flash")
+        
+#         respononse = model.generate_content(query)
+#         filter_text = markdown_to_text(respononse.text)
+#         speak(filter_text)
+
+#     except Exception as e:
+#         print("Error:", e)
+        
+# Setting Model
+
+
+
+# Assistant name
+
+
+@eel.expose
+def assistantName():
+    name = ASSISTANT_NAME
+    return name
+
+
+@eel.expose
+def personalInfo():
+    try:
+        cursor.execute("SELECT * FROM info1")
+        results = cursor.fetchall()
+        jsonArr = json.dumps(results[0])
+        eel.getData(jsonArr)
+        return 1    
+    except IndexError:
+        print("no data")
+
+
+@eel.expose
+def updatePersonalInfo(name, designation, mobileno, email, city):
+    cursor.execute("SELECT COUNT(*) FROM info1")
+    count = cursor.fetchone()[0]
+
+    if count > 0:
+        # Update existing record
+        cursor.execute(
+            '''UPDATE info1
+            SET name=?, designation=?, mobileno=?, email=?, city=?
+            WHERE rowid=1
+            ''',
+            (name, designation, mobileno, email, city)
+        )
+    else:
+        # Insert new record if no data exists
+        cursor.execute(
+            '''INSERT INTO info1(name, designation, mobileno, email, city) 
+            VALUES (?, ?, ?, ?, ?)''',
+            (name, designation, mobileno, email, city)
+        )
+
+    conn.commit()
+    personalInfo()
+    return 1
+
+
+
+@eel.expose
+def displaySysCommand():
+    cursor.execute("SELECT * FROM sys_command")
+    results = cursor.fetchall()
+    jsonArr = json.dumps(results)
+    eel.displaySysCommand(jsonArr)
+    return 1
+
+
+@eel.expose
+def deleteSysCommand(id):
+    cursor.execute("DELETE FROM sys_command WHERE id = ?", (id,))
+    conn.commit()
+
+
+@eel.expose
+def addSysCommand(key, value):
+    cursor.execute(
+        '''INSERT INTO sys_command VALUES (?, ?, ?)''', (None,key, value))
+    conn.commit()
+
+
+@eel.expose
+def displayWebCommand():
+    cursor.execute("SELECT * FROM web_command")
+    results = cursor.fetchall()
+    jsonArr = json.dumps(results)
+    eel.displayWebCommand(jsonArr)
+    return 1
+
+
+@eel.expose
+def addWebCommand(key, value):
+    cursor.execute(
+        '''INSERT INTO web_command VALUES (?, ?, ?)''', (None, key, value))
+    conn.commit()
+
+
+@eel.expose
+def deleteWebCommand(id):
+    cursor.execute("DELETE FROM web_command WHERE Id = ?", (id,))
+    conn.commit()
+
+
+@eel.expose
+def displayPhoneBookCommand():
+    cursor.execute("SELECT * FROM contacts")
+    results = cursor.fetchall()
+    jsonArr = json.dumps(results)
+    eel.displayPhoneBookCommand(jsonArr)
+    return 1
+
+
+@eel.expose
+def deletePhoneBookCommand(id):
+    cursor.execute("DELETE FROM contacts WHERE Id = ?", (id,))
+    conn.commit()
+
+
+@eel.expose
+def InsertContacts(Name, MobileNo, Email, City):
+    cursor.execute(
+        '''INSERT INTO contacts VALUES (?, ?, ?, ?, ?)''', (None, Name, MobileNo, Email, City))
+    conn.commit()

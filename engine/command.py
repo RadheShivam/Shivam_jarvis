@@ -65,7 +65,7 @@ def allCommands(message=1):
             from engine.features import PlayYoutube
             PlayYoutube(query)
 
-        elif ("send message" in query or 
+        elif ("send message" in query or
               "phone call" in query or 
               "video call" in query):
             from engine.features import (
@@ -103,6 +103,12 @@ def allCommands(message=1):
         else:
             from engine.features import chatBot
             chatBot(query)
+
+            # For gemini use this
+
+            # from engine.features import geminai
+            # geminai(query)
+
     except Exception as e:
         print(f"Error: {e}")
         print("error")

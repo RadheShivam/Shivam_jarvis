@@ -1,10 +1,8 @@
-
 import multiprocessing
 import subprocess
 import os
 
 # To run Jarvis
-
 
 def startJarvis():
     # Code for process 1
