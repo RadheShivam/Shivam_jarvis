@@ -45,3 +45,5 @@ From launching applications to making phone calls and chatting, Jarvis brings **
 ## 🖼️ Demo
 
 🔐 Face Authentication
+<img width="1289" height="1044" alt="Screenshot 2026-01-18 111506" src="https://github.com/user-attachments/assets/9866d7cf-aa5f-4380-b5fd-33ac46a6777d" />
+
