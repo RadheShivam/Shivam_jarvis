@@ -47,3 +47,6 @@ From launching applications to making phone calls and chatting, Jarvis brings **
 🔐 Face Authentication
 <img width="1289" height="1044" alt="Screenshot 2026-01-18 111506" src="https://github.com/user-attachments/assets/9866d7cf-aa5f-4380-b5fd-33ac46a6777d" />
 
+## 🎤 Speech to Text Recognition
+
+<img width="1295" height="1047" alt="Screenshot 2026-01-18 111547" src="https://github.com/user-attachments/assets/934a42a6-4389-42b4-bb55-e8db1155c72f" />
