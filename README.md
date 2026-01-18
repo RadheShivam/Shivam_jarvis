@@ -53,3 +53,9 @@ From launching applications to making phone calls and chatting, Jarvis brings **
 ---
 
 <img width="1295" height="1047" alt="Screenshot 2026-01-18 111547" src="https://github.com/user-attachments/assets/934a42a6-4389-42b4-bb55-e8db1155c72f" />
+
+---
+## 🎤 Voice Assistant
+---
+<img width="1292" height="1033" alt="Screenshot 2026-01-18 112503" src="https://github.com/user-attachments/assets/9879950a-3421-4188-aa90-9fde71a7daf5" />
+
