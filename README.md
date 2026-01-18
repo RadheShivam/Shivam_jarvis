@@ -20,3 +20,11 @@ From launching applications to making phone calls and chatting, Jarvis brings **
 - 🌤️ **Check Real-Time Weather Updates**
 
 ---
+## 🛠️ Technologies Used
+
+- **Python**
+- **Eel (Python ↔ Web Interface)**
+- **HTML**
+- **CSS**
+- **JavaScript**
+- **Android (ADB integration)**
