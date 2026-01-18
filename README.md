@@ -6,6 +6,7 @@ It allows you to control your **PC and Android mobile** using simple **voice or 
 From launching applications to making phone calls and chatting, Jarvis brings **AI-powered automation** right to your fingertips.
 
 ---
+
 ## ✨ Features
 
 - 🎙️ **Control via Voice & Typing**
@@ -20,6 +21,7 @@ From launching applications to making phone calls and chatting, Jarvis brings **
 - 🌤️ **Check Real-Time Weather Updates**
 
 ---
+
 ## 🛠️ Technologies Used
 
 - **Python**
@@ -28,3 +30,14 @@ From launching applications to making phone calls and chatting, Jarvis brings **
 - **CSS**
 - **JavaScript**
 - **Android (ADB integration)**
+
+---
+
+## 🚀 How It Works
+
+1. User gives a **voice or text command**
+2. Python processes the command
+3. Eel connects Python with the web UI
+4. Required action is performed on **PC or Mobile**
+
+---
