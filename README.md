@@ -7,6 +7,7 @@ From launching apps to making calls and chatting, Jarvis brings AI and automatio
 ✨ Features
 
 .🎙️ Control via Voice & Typing
+
 📞 Make Phone Calls via Mobile (Android)
 📲 Pickup & Disconnect Calls
 💻 Launch Desktop Applications
