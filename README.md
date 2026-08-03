@@ -278,7 +278,6 @@ Through this project, I gained hands-on experience in:
 
 ---
 
-# ⭐ If you found this project useful, please give it a Star!
 
 ## 🖼️ Demo
 
@@ -297,3 +296,4 @@ Through this project, I gained hands-on experience in:
 ---
 <img width="1292" height="1033" alt="Screenshot 2026-01-18 112503" src="https://github.com/user-attachments/assets/9879950a-3421-4188-aa90-9fde71a7daf5" />
 
+# ⭐ If you found this project useful, please give it a Star!
